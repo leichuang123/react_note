@@ -1,4 +1,5 @@
 // reducer本质是个函数（上一个状态，action对象)，用于初始化和加工状态，并且返回新的state
+import { INCREMENT, DECREMENT } from './constant';
 
 const initState = 0;
 
@@ -7,9 +8,9 @@ export default function countReducer(preState = initState, action) {
     console.log(preState, action);
     const { type, data } = action;
     switch (type) {
-        case 'increment':
+        case INCREMENT:
             return preState + data;
-        case 'decrement':
+        case DECREMENT:
             return preState - data;
         // 初始化
         default:

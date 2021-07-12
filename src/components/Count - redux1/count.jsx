@@ -1,6 +1,8 @@
 import './count.less';
 import React, { Component } from 'react';
 import store from '../../redux/store';
+// 引入action
+import { createIncrementAction, createDecrementAction, createIncrementAsyncAction } from '../../redux/count_action';
 import { Select, Button, Spin } from 'antd';
 const { Option } = Select;
 
@@ -23,12 +25,14 @@ export default class count extends Component {
     // 加
     increment = () => {
         const { selectNumber } = this.state;
-        store.dispatch({ type: 'increment', data: selectNumber * 1 });
+        //store.dispatch({ type: 'increment', data: selectNumber * 1 });
+        store.dispatch(createIncrementAction(selectNumber * 1));
     };
     // 减
     decrement = () => {
         const { selectNumber } = this.state;
-        store.dispatch({ type: 'decrement', data: selectNumber * 1 });
+        //store.dispatch({ type: 'decrement', data: selectNumber * 1 });
+        store.dispatch(createDecrementAction(selectNumber * 1));
     };
     // 异步加
     incrementAsync = () => {
@@ -36,10 +40,16 @@ export default class count extends Component {
         this.setState({
             loading: true,
         });
-        setTimeout(() => {
-            store.dispatch({ type: 'increment', data: selectNumber * 1 });
-            this.setState({ loading: false });
-        }, 1000);
+        // setTimeout(() => {
+        //     // 同步action
+        //     // store.dispatch({ type: 'increment', data: selectNumber * 1 });
+        //     store.dispatch(createIncrementAction(selectNumber * 1));
+        //     this.setState({ loading: false });
+        // }, 1000);
+
+        // 异步action
+        store.dispatch(createIncrementAsyncAction(selectNumber * 1, 1000));
+        this.setState({ loading: false });
     };
     render() {
         return (
