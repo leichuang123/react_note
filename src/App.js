@@ -6,6 +6,7 @@ import { NavLink, Route, Redirect, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
 import Header from './components/Header';
+import Count from './components/Count - redux1/count';
 
 export default class App extends Component {
     render() {
@@ -14,6 +15,7 @@ export default class App extends Component {
                 <div className="row">
                     <div className="col-xs-offset-2 col-xs-8">
                         <Header></Header>
+                        <Count></Count>
                     </div>
                 </div>
                 <div className="row">
