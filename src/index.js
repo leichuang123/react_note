@@ -2,14 +2,12 @@
 import React from 'react';
 //引入ReactDOM
 import ReactDOM from 'react-dom';
-//
-import { BrowserRouter, HashRouter } from 'react-router-dom';
 //引入App
 import App from './App';
+import store from './redux/store';
 
-ReactDOM.render(
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>,
-    document.getElementById('root')
-);
+ReactDOM.render(<App />, document.getElementById('root'));
+// 监听redux中状态的改变，重新渲染app组件
+store.subscribe(() => {
+    ReactDOM.render(<App />, document.getElementById('root'));
+});
