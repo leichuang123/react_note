@@ -1,6 +1,6 @@
 import './count.less';
 import React, { Component } from 'react';
-import store from '../../redux/store';
+// import store from '../../redux/store';
 import { Select, Button, Spin } from 'antd';
 const { Option } = Select;
 
